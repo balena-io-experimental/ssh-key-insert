@@ -18,11 +18,12 @@ BASEFILE="/mnt/boot/config.json"
 NEWFILE="$BASEFILE.new"
 
 main() {
-  echo "YEAH"
   jq  ".os.sshKeys += [ \"$SSHKEY\" ]" "$BASEFILE" > "$NEWFILE"
   echo "INSERTING"
   if [ "$(jq -e '.os.sshKeys' "$NEWFILE")" != "" ] ; then
+    systemctl stop resin-supervisor || true
     mv "$NEWFILE" "$BASEFILE"
+    systemctl start resin-supervisor || true
     echo "DONE"
   else
     echo "FAIL: ssh key not found in transitory file $BASEFILE"
