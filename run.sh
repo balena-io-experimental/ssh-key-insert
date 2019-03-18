@@ -5,4 +5,4 @@
 # * if no success logged, then check if UUID exists first,
 #   then connect to the device with balena ssh, pipe in the task script, and
 #   save the log with the UUID prepended
-cat batch | stdbuf -oL xargs -I{} -P 30 /bin/sh -c "grep -a -q '{} : DONE' sshkey.log || (balena device {} > /dev/null 2>&1 && cat add-ssh-key.sh | balena ssh {} -s | sed 's/^/{} : /' | tee --append sshkey.log)"
+cat batch | stdbuf -oL xargs -I{} -P 10 /bin/sh -c "grep -a -q '{} : DONE' sshkey.log || (cat add-ssh-key.sh | balena ssh {} -s --noninteractive | sed 's/^/{} : /' | tee --append sshkey.log)"
