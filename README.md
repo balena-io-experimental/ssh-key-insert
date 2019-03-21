@@ -1,4 +1,4 @@
-## Add SSH keys to
+## Add SSH keys to BalenaOS devices
 
 Starting from Balena OS [v2.20.0](https://github.com/balena-os/meta-balena/blob/master/CHANGELOG.md#v2200)
 it is possible to provide the operating system with custom SSH keys, that are loaded
@@ -9,11 +9,13 @@ entry to the `config.json`, following the structure as shown in the
 
 You can either add those structures to the `config.json` before you provision
 a device, or modify that file of an existing device. This repository presents
-tooling for doing the latter option in a safe, and parallel manner.
+tooling for doing the latter option in a safe, and parallel manner, using the
+balena CLI to connect to devices and run an updater script on them.
 
 ### Requirements
 
-* [balena-cli](https://github.com/balena-io/balena-cli/) version above v9.15.0 installed
+* [balena CLI](https://github.com/balena-io/balena-cli/) version above v9.15.0 installed
+  (so that the `--noninteractive` option is available in `balena ssh`)
 * Linux operating system
 
 ### Usage
