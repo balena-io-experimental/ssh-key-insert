@@ -24,7 +24,10 @@ main() {
   if [ "$(jq -e '.os.sshKeys' "$NEWFILE")" != "" ] ; then
     systemctl stop resin-supervisor || true
     mv "$NEWFILE" "$BASEFILE"
+    echo "Restarting supervisor"
     systemctl start resin-supervisor || true
+    echo "Restarting SSH key copy service"
+    systemctl restart os-sshkeys || true
     echo "DONE"
   else
     echo "FAIL: ssh key not found in transitory file $BASEFILE"

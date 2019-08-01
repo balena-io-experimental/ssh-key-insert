@@ -44,7 +44,3 @@ or all the failures:
 ```
 cat sshkey.log | grep FAIL
 ```
-
-**Also note**, that just after this update the ssh keys don't take effect
-just yet, rather the device needs to be rebooted, so that the
-appropriate OS service will place the files to the right places.
