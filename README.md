@@ -38,9 +38,9 @@ balena CLI to connect to devices and run an updater script on them.
 You can check the results in the log, afterwards, for example showing all the
 successful updates with:
 ```
-cat sshkey.log | grep DONE
+grep DONE sshkey.log
 ```
 or all the failures:
 ```
-cat sshkey.log | grep FAIL
+grep FAIL sshkey.log
 ```
