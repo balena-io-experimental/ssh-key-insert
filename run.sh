@@ -1,4 +1,4 @@
-# This oneiner does the following:
+# This oneliner does the following:
 # * takes UUIDs from the 'batch' file
 # * in parallel runs the update logic on them, with parallelism defined by the '-P' setting
 # * connect to the device with balena ssh, pipe in the task script, and
